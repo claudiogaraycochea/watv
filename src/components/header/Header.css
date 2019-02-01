@@ -1,0 +1,29 @@
+.header {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background: #ff006b;
+    color: #ffffff;
+}
+
+.logo {
+    width: 32px;
+}
+
+.search {
+    border-bottom: 1px solid #fda0c6;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex: 1 1 auto;
+}
+
+.icon-menu {
+    background-image: url(../../assets/icon-menu.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    display: block;
+    height: 32px;
+    width: 32px;
+}
