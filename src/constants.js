@@ -1,0 +1,1 @@
+export const API_URL = "http://sharesmarttv.com/azumo/api/v1/";

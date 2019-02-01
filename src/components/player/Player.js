@@ -20,6 +20,7 @@ class Player extends Component {
     return (
       <div>
         Player {this.state.linkname}
+        <iframe ></iframe>
       </div>
     );
   }
