@@ -28,6 +28,18 @@ const reducer = (state, action) => {
         cart: state.cart.filter(product => product.id !== action.product.id)
       };
 
+    case "REPLACE_PLAYLIST":
+      return {
+        ...state,
+        data: action.data
+      };
+
+    case "PLAYLIST_RESPONSE": 
+      return {
+        ...state,
+        text: action.text
+      };
+      
     default: 
       return state; // eslint-disable-next-line
   };
