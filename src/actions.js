@@ -33,4 +33,23 @@ const removeFromCart = product => {
   };
 };
 
-export { loadProducts, addToCart, removeFromCart };
+const getPlaylist = () => {
+  return dispatch => {
+    const website_linkname = 'website_linkname=demotvprogram';
+    axios.post(`${API_URL}getPlaylist`, website_linkname )
+      .then(response => {
+        dispatch({
+          type: "REPLACE_PLAYLIST",
+          data: response.data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: "PLAYLIST_RESPONSE",
+          text: "Error in network :( Please try later."
+        });
+      });
+  };
+};
+
+export { getPlaylist, loadProducts, addToCart, removeFromCart };
