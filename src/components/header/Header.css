@@ -6,6 +6,7 @@
     background: #ff006b;
     color: #ffffff;
     position: relative;
+    box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.15);
 }
 
 .logo {
@@ -19,29 +20,33 @@
 }
 
 .icon-menu {
-    background-image: url(../../assets/icon-menu.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    display: block;
-    height: 32px;
-    width: 32px;
+    display: flex;
+    height: 20px;
+    width: 20px;
 }
 
 .search-list-wrapper {
     position: absolute;
     left: 62px;
-    top: 32px;
+    top: 38px;
+    box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    background: #f4f4f4;
+    color: #222222;
 }
 
 .search-list-wrapper .item {
-    background-color: #222222;
     padding: 10px 20px;
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid rgb(218, 218, 218);
+}
+
+.search-list-wrapper .item:last-child {
+    padding: 10px 20px;
+    border-bottom: 0;
 }
 
 .search-list-wrapper .item a{
-    color: #ffffff;
+    color: #f90c6c;
 }
 
 .input-search {

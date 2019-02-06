@@ -11,7 +11,7 @@ class Program extends Component {
       data: {},
       date: '',
       playlistSrc: [],
-      playingItem: '',
+      playingItem: 0,
       playlistLastUpdate: '',
       playlistLastUpdateReseted: false,
       resetPlaylistSrc: false,
@@ -47,7 +47,6 @@ class Program extends Component {
     let count = 0;
     let programBeginNumber = '';
     let timeNowNumber = this.timeToNumber(this.getTimeNow());
-    //console.log('getPlayingItem',timeNowNumber)
     for(let i=0;i<playlistSrc.length;i++){
       programBeginNumber = this.timeToNumber(playlistSrc[i]['program_begin']);
       if(programBeginNumber > timeNowNumber) {
@@ -62,7 +61,7 @@ class Program extends Component {
   componentDidMount() {
     const playlistSrcFull = this.props.data.playlistSrc;
     const playlistSrc = playlistSrcFull.filter(function (item) {
-      return item.program_day === 'tue'
+      return item.program_day === 'wed'
     });
     const playingItem = this.getPlayingItem(playlistSrc);
     this.setState({
@@ -88,9 +87,8 @@ class Program extends Component {
     let postData='website_id='+this.state.data.websiteId;
     axios.post(`${API_URL}playlistLastUpdate`, postData )
       .then(response => {
-        console.log('response.data.lu_time',response.data.lu_time,'  ---->  ',this.state.playlistLastUpdate);
+        //console.log('response.data.lu_time',response.data.lu_time,'  ---->  ',this.state.playlistLastUpdate);
         if (this.state.playlistLastUpdate===''){
-          console.log('first time');
           this.setState({
             playlistLastUpdate: response.data.lu_time,
           });
@@ -110,7 +108,7 @@ class Program extends Component {
     console.log('RESET RESPONSE');
     const playlistSrcFull = this.state.resetPlaylistSrcResponse;
     const playlistSrc = playlistSrcFull.filter(function (item) {
-      return item.program_day === 'tue'
+      return item.program_day === 'wed'
     });
     const playingItem = this.getPlayingItem(playlistSrc);
     this.setState({
@@ -139,7 +137,7 @@ class Program extends Component {
       if(this.state.resetPlaylistSrc===true) {this.resetPlaylistSrc();}
       return (
         <div className="iframe-wrapper">
-          <iframe  title={'watv'} src={this.state.playlistSrc[this.state.playingItem].module_link} className="iframe-container"></iframe>
+          <iframe title={'watv'} src={this.state.playlistSrc[this.state.playingItem].module_link} className="iframe-container"></iframe>*/}
           <div className="console-wrapper">
             {this.state.playlistSrc.map((item,i) => <div key={i} className={(i===this.state.playingItem) ? 'playing-item selected' : 'playing-item'} >{i} {decodeURI(item.module_name)} / {item.module_link} / {item.program_day} / {item.program_begin} </div>)}
           </div>

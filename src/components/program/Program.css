@@ -14,7 +14,7 @@
 
 .console-wrapper {
     position: absolute;
-    bottom: 0;
+    bottom: 36px;
     left: 0;
     background: black;
     font-size: 12px;

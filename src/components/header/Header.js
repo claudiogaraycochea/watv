@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import logo from '../../assets/logo-watv.svg';
+import iconMenu from '../../assets/icon-menu.svg';
 import './Header.css';
 import axios from 'axios';
 import { API_URL } from '../../constants';
-import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      websiteLinkname: '',
       searchList: []
     };
     this.handleSearchKeyUp = this.keyUpHandler.bind(this, 'inputSearch');
@@ -16,32 +17,26 @@ class Main extends Component {
 
   keyUpHandler(refName, e) {
     const inputSearch = e.target.value;
-    console.log(inputSearch,' > ', inputSearch.length);
     if(inputSearch.length>3) {
       let postData='q='+inputSearch;
       axios.post(`${API_URL}s`, postData )
         .then(response => {
-          console.log('response: ',response);
           this.setState({
             searchList: response.data
           });
         })
         .catch(error => {});
     }
-    // prints either LoginInput or PwdInput
   }
 
   getSearchList(){
     return (
       <div className="search-list-wrapper">
         {this.state.searchList.map(
-          (item,i) => 
-          <Router>
-            <div key={i} class="item">
-              <Link to={`${item.website_linkname}`}>{item.website_linkname}</Link>
-              {/* {item.website_name} <Link to={item.website_linkname} activeClassName="active">Liiink</Link>*/}
+          (item,i) =>
+            <div key={i} className="item">
+              {item.website_name} <a href={item.website_linkname} >https://weband.tv/{item.website_linkname}</a>
             </div>
-          </Router>
           )
         }
       </div>
@@ -49,14 +44,15 @@ class Main extends Component {
   }
 
   render() {
-    console.log('****** this.state:',this.state);
     return (
       <div className="header">
-        <img src={logo} className="logo" alt="logo" /> 
+        <img src={logo} className="logo" alt="" /> 
         <div className="search">
-          <input type="text" onKeyUp={this.handleSearchKeyUp} ref="inputSearch" className="input-search"/>
+          <input type="text" onKeyUp={this.handleSearchKeyUp} ref="inputSearch" className="input-search" defaultValue={this.state.websiteLinkname}/>
         </div>
-        <div className="menu"><div className="icon-menu"></div></div>
+        <div className="menu">
+          <img src={iconMenu} className="icon-menu" alt="Menu" /> 
+        </div>
         { (this.state.searchList.length>0) ? this.getSearchList(): null }
       </div>
     );
