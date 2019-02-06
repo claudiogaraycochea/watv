@@ -17,7 +17,7 @@ class Main extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Welcome} />
-                    <Route path="/:linkname" component={Player} />        
+                    <Route path="/:websiteLinkname" component={Player} />        
                 </Switch>
             </BrowserRouter>
         </div>
