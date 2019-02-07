@@ -46,9 +46,9 @@ class Main extends Component {
   render() {
     return (
       <div className="header">
-        <img src={logo} className="logo" alt="" /> 
+        <a href="/"><img src={logo} className="logo" alt="" /></a>
         <div className="search">
-          <input type="text" onKeyUp={this.handleSearchKeyUp} ref="inputSearch" className="input-search" defaultValue={this.state.websiteLinkname}/>
+          <input type="text" onKeyUp={this.handleSearchKeyUp} ref="inputSearch" className="input-search" defaultValue={this.state.websiteLinkname} placeholder="Search TV/Program"/>
         </div>
         <div className="menu">
           <img src={iconMenu} className="icon-menu" alt="Menu" /> 

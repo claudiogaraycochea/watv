@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Welcome from '../welcome/Welcome';
 import Player from '../player/Player';
+import Terms from '../terms/Terms';
 
 class Main extends Component {
   render() {
@@ -16,7 +17,8 @@ class Main extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Welcome} />
-                    <Route path="/:websiteLinkname" component={Player} />        
+                    <Route exact path="/terms" component={Terms} />
+                    <Route path="/:websiteLinkname" component={Player} />  
                 </Switch>
             </BrowserRouter>
         </div>
