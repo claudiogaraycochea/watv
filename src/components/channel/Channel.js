@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Channel.css';
+import Empty from '../empty/Empty';
 
 class Channel extends Component {
   constructor(props) {
@@ -19,16 +20,21 @@ class Channel extends Component {
   render() {
     console.log('CHANNEL: ',this.props);
     console.log('CHANNEL STATE:', this.state);
-    return (
-      <div>
-        <h2>Channel</h2>
-        ---
+    if(this.props.data.playlistSrc.length>0){
+      return (
         <div>
-          {this.props.data.playlistSrc.map((item,i) => <div key={i}>{decodeURI(item.module_name)} / {item.module_link}</div>)}
+          <h2>Channel</h2>
+          ---
+          <div>
+            {this.props.data.playlistSrc.map((item,i) => <div key={i}>{decodeURI(item.module_name)} / {item.module_link}</div>)}
+          </div>
+          
         </div>
-        
-      </div>
-    );
+      );
+    }
+    else {
+      return (<Empty />)
+    }
   }
 }
 

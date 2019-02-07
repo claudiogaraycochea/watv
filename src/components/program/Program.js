@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Program.css';
 import axios from 'axios';
 import { API_URL } from '../../constants';
-import Empty from './empty/Empty';
+import Empty from '../empty/Empty';
 
 class Program extends Component {
   constructor(props) {
@@ -73,7 +73,7 @@ class Program extends Component {
     const queryDay = this.getProgramQueryDayToQueryDay(new Date().toDateInputValue());
     const playlistSrcFull = this.props.data.playlistSrc;
     const playlistSrc = playlistSrcFull.filter(function (item) {
-      return item.program_day === queryDay
+      return (item.program_day.indexOf(queryDay)>-1)
     });
     const playingItem = this.getPlayingItem(playlistSrc);
     this.setState({
@@ -129,7 +129,7 @@ class Program extends Component {
     const queryDay = this.state.queryDay;
     const playlistSrcFull = this.state.resetPlaylistSrcResponse;
     const playlistSrc = playlistSrcFull.filter(function (item) {
-      return item.program_day === queryDay
+      return (item.program_day.indexOf(queryDay)>-1)
     });
     const playingItem = this.getPlayingItem(playlistSrc);
     this.setState({

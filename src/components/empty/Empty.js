@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Empty.css';
-import Footer from '../../footer/Footer';
+import Footer from '../footer/Footer';
 
 class Empty extends Component {
   render() {
