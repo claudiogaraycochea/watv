@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Empty.css';
 import Footer from '../../footer/Footer';
-import logo from '../../../assets/logo-watv.svg';
 
 class Empty extends Component {
   render() {
