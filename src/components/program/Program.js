@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './Program.css';
 import axios from 'axios';
 import { API_URL } from '../../constants';
-import Footer from '../footer/Footer';
+import PlayerControl from '../playerControl/PlayerControl';
+import Empty from './empty/Empty';
 
 class Program extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class Program extends Component {
   componentDidMount() {
     const playlistSrcFull = this.props.data.playlistSrc;
     const playlistSrc = playlistSrcFull.filter(function (item) {
-      return item.program_day === 'wed'
+      return item.program_day === 'tur'
     });
     const playingItem = this.getPlayingItem(playlistSrc);
     this.setState({
@@ -109,7 +110,7 @@ class Program extends Component {
     console.log('RESET RESPONSE');
     const playlistSrcFull = this.state.resetPlaylistSrcResponse;
     const playlistSrc = playlistSrcFull.filter(function (item) {
-      return item.program_day === 'wed'
+      return item.program_day === 'tur'
     });
     const playingItem = this.getPlayingItem(playlistSrc);
     this.setState({
@@ -134,6 +135,7 @@ class Program extends Component {
 
   render() {
     if(this.state.playlistSrc.length>0){
+      console.log('Entro a playlistSrc');
       if(this.state.playlistLastUpdateReseted===true) {this.getPlaylistSrc();}
       if(this.state.resetPlaylistSrc===true) {this.resetPlaylistSrc();}
       return (
@@ -144,12 +146,12 @@ class Program extends Component {
               {this.state.playlistSrc.map((item,i) => <div key={i} className={(i===this.state.playingItem) ? 'playing-item selected' : 'playing-item'} >{i} {decodeURI(item.module_name)} / {item.module_link} / {item.program_day} / {item.program_begin} </div>)}
             </div>
           </div>
-          <Footer className="footer"/>
+          <PlayerControl className="player-control"/>
         </div>
       );      
     }
     else {
-      return (<div>Esta vacio</div>);
+      return (<Empty />);
     }
   }
 }
