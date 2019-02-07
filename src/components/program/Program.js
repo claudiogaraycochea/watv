@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Program.css';
 import axios from 'axios';
 import { API_URL } from '../../constants';
-import PlayerControl from '../playerControl/PlayerControl';
 import Empty from './empty/Empty';
 
 class Program extends Component {
@@ -20,11 +19,14 @@ class Program extends Component {
       resetPlaylistSrcResponse: {},
       refreshPlaylistSrc: 60000,
       refreshPlayingItem: 1000,
+      queryDay: '',
     };
     this.updateDate = this.updateDate.bind(this);
     this.interval = setInterval(this.updateDate, this.state.refreshPlayingItem);
     this.updateDatePlaylistSrc = this.updateDatePlaylistSrc.bind(this);
     this.intervalPlaylistSrc = setInterval(this.updateDatePlaylistSrc,this.state.refreshPlaylistSrc);
+    this.handleOnClickPlay = this.handleOnClickPlay.bind(this);
+    this.handleOnClickChange = this.handleOnClickChange.bind(this);
   }
 
   timeToNumber(time){
@@ -60,10 +62,18 @@ class Program extends Component {
     return count;
   }
 
+  getProgramQueryDayToQueryDay(programQueryDay){
+    let date = programQueryDay.split('-');
+    date = new Date(date[0]+'/'+date[1]+'/'+date[2]);
+    let day = date.toLocaleDateString('en-US', { weekday: 'short' });
+    return day.toLowerCase();
+  }
+
   componentDidMount() {
+    const queryDay = this.getProgramQueryDayToQueryDay(new Date().toDateInputValue());
     const playlistSrcFull = this.props.data.playlistSrc;
     const playlistSrc = playlistSrcFull.filter(function (item) {
-      return item.program_day === 'tur'
+      return item.program_day === queryDay
     });
     const playingItem = this.getPlayingItem(playlistSrc);
     this.setState({
@@ -71,11 +81,20 @@ class Program extends Component {
       data: this.props.data,
       playlistSrc,
       playingItem,
+      queryDay
     });
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
+  }
+  
+  handleOnClickPlay(){
+    console.log('Play');
+  }
+
+  handleOnClickChange(e){
+    console.log('Change',e.target.value)
   }
   
   updateDate() {
@@ -107,10 +126,10 @@ class Program extends Component {
   }
 
   resetPlaylistSrc(){
-    console.log('RESET RESPONSE');
+    const queryDay = this.state.queryDay;
     const playlistSrcFull = this.state.resetPlaylistSrcResponse;
     const playlistSrc = playlistSrcFull.filter(function (item) {
-      return item.program_day === 'tur'
+      return item.program_day === queryDay
     });
     const playingItem = this.getPlayingItem(playlistSrc);
     this.setState({
@@ -134,8 +153,8 @@ class Program extends Component {
   }
 
   render() {
+    //console.log('RESET STATE:',this.state);
     if(this.state.playlistSrc.length>0){
-      console.log('Entro a playlistSrc');
       if(this.state.playlistLastUpdateReseted===true) {this.getPlaylistSrc();}
       if(this.state.resetPlaylistSrc===true) {this.resetPlaylistSrc();}
       return (
@@ -146,7 +165,12 @@ class Program extends Component {
               {this.state.playlistSrc.map((item,i) => <div key={i} className={(i===this.state.playingItem) ? 'playing-item selected' : 'playing-item'} >{i} {decodeURI(item.module_name)} / {item.module_link} / {item.program_day} / {item.program_begin} </div>)}
             </div>
           </div>
-          <PlayerControl className="player-control"/>
+          <div className="player-control">
+            <button onClick={this.handleOnClickPlay}>Play/Pause</button> 
+            <button onClick={this.handleOnClickChange} value="back">Back</button> 
+            <button onClick={this.handleOnClickChange} value="next">Next</button> 
+            <button onClick={this.handleOnClickChange} value="now">Now</button>
+          </div> 
         </div>
       );      
     }

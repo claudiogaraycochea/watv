@@ -31,15 +31,9 @@ class Player extends Component {
       .catch(error => {});
   }
 
-  playlistPlay() {
-    console.log('playlistPlay: this.state.data: ', this.state.data);
-  }
-
   render() {
     if(this.state.data.playlistSrc!==undefined){
-      console.log('this.state.data:',this.state.data);
       if(this.state.data.websiteType==='1'){
-        this.playlistPlay();
         return (
           <Program data={this.state.data} websiteLinkname={this.props.match.params.websiteLinkname} />
         );     
@@ -51,7 +45,12 @@ class Player extends Component {
       }
     }
     else {
-      return (<div>Loading</div>)
+      return (
+        <div className="primary-style">
+          <div className="container padding-20 center">
+            Loading...
+          </div>
+        </div>);
     }
   }
 }
