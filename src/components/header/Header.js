@@ -53,7 +53,9 @@ class Main extends Component {
         <div className="menu">
           <img src={iconMenu} className="icon-menu" alt="Menu" /> 
         </div>
-        { (this.state.searchList.length>0) ? this.getSearchList(): null }
+        <div className="search-list-result">
+          { (this.state.searchList.length>0) ? this.getSearchList(): null }
+        </div>
       </div>
     );
   }

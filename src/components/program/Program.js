@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Program.css';
 import axios from 'axios';
 import { API_URL } from '../../constants';
+import Footer from '../footer/Footer';
 
 class Program extends Component {
   constructor(props) {
@@ -136,11 +137,14 @@ class Program extends Component {
       if(this.state.playlistLastUpdateReseted===true) {this.getPlaylistSrc();}
       if(this.state.resetPlaylistSrc===true) {this.resetPlaylistSrc();}
       return (
-        <div className="iframe-wrapper">
-          <iframe title={'watv'} src={this.state.playlistSrc[this.state.playingItem].module_link} className="iframe-container"></iframe>*/}
-          <div className="console-wrapper">
-            {this.state.playlistSrc.map((item,i) => <div key={i} className={(i===this.state.playingItem) ? 'playing-item selected' : 'playing-item'} >{i} {decodeURI(item.module_name)} / {item.module_link} / {item.program_day} / {item.program_begin} </div>)}
+        <div className="primary-style">
+          <div className="container">
+            <iframe title={'watv'} src={this.state.playlistSrc[this.state.playingItem].module_link} className="iframe-container"></iframe>
+            <div className="console-wrapper">
+              {this.state.playlistSrc.map((item,i) => <div key={i} className={(i===this.state.playingItem) ? 'playing-item selected' : 'playing-item'} >{i} {decodeURI(item.module_name)} / {item.module_link} / {item.program_day} / {item.program_begin} </div>)}
+            </div>
           </div>
+          <Footer className="footer"/>
         </div>
       );      
     }

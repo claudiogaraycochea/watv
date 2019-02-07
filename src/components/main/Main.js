@@ -12,7 +12,7 @@ class Main extends Component {
     return (
       <div className="main">
         <Header />
-        <div className="container">
+        <div className="content">
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Welcome} />

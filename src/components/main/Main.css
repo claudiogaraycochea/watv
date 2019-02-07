@@ -7,14 +7,34 @@
     background: #ffffff;
 }
 
-.container {
+.content {
     flex: 1 1 auto;
     overflow: auto;
     height: 100vh;
+    position: relative;
 }
 
-.grid-container {
+.primary-style {
+    background: #ff006b;
+    color: #ffffff;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
     flex: 1 1 auto;
-    overflow: auto;
-    border: 2px solid orange;
+    display: flex;
+}
+
+.secondary-style {
+    background: #ffffff;
+    color: #222222;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.padding-20 {
+    padding: 20px;
 }

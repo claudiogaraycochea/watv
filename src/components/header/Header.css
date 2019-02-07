@@ -7,6 +7,7 @@
     color: #ffffff;
     position: relative;
     box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.15);
+    z-index: 100;
 }
 
 .logo {
@@ -25,14 +26,21 @@
     width: 20px;
 }
 
-.search-list-wrapper {
+.search-list-result {
     position: absolute;
-    left: 62px;
-    top: 38px;
-    box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
+    left: 0;
+    top: 42px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.search-list-wrapper {
     background: #f4f4f4;
     color: #222222;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
 }
 
 .search-list-wrapper .item {
