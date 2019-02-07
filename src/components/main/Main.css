@@ -38,3 +38,8 @@
 .padding-20 {
     padding: 20px;
 }
+
+.center {
+    align-items: center;
+    justify-content: center;
+}
