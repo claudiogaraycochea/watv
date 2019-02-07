@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './Main.css';
 import Header from '../header/Header';
-import Footer from '../footer/Footer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Welcome from '../welcome/Welcome';
@@ -13,15 +12,14 @@ class Main extends Component {
     return (
       <div className="main">
         <Header />
-        <div className="container">
+        <div className="content">
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Welcome} />
-                    <Route path="/:linkname" component={Player} />        
+                    <Route path="/:websiteLinkname" component={Player} />        
                 </Switch>
             </BrowserRouter>
         </div>
-        <Footer />
       </div>
     );
   }

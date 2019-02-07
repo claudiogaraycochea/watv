@@ -16,8 +16,8 @@ class Player extends Component {
   }
 
   componentDidMount() {
-    const website_linkname = 'website_linkname='+this.props.match.params.linkname;
-    axios.post(`${API_URL}getPlaylist`, website_linkname )
+    const websiteLinkname = 'website_linkname='+this.props.match.params.websiteLinkname;
+    axios.post(`${API_URL}getPlaylist`, websiteLinkname )
       .then(response => {
         this.setState({
           data: {
@@ -41,7 +41,7 @@ class Player extends Component {
       if(this.state.data.websiteType==='1'){
         this.playlistPlay();
         return (
-          <Program data={this.state.data} />
+          <Program data={this.state.data} websiteLinkname={this.props.match.params.websiteLinkname} />
         );     
       }
       else {
