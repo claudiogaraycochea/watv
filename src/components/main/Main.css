@@ -35,6 +35,14 @@
     flex-direction: column;
 }
 
+.tertiary-style {
+    background: #343448;
+    color: #ffffff;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .padding-20 {
     padding: 20px;
 }
