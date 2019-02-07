@@ -48,7 +48,7 @@ class Main extends Component {
       <div className="header">
         <a href="/"><img src={logo} className="logo" alt="" /></a>
         <div className="search">
-          <input type="text" onKeyUp={this.handleSearchKeyUp} ref="inputSearch" className="input-search" defaultValue={this.state.websiteLinkname} placeholder="Search TV Channelgi/Program"/>
+          <input type="text" onKeyUp={this.handleSearchKeyUp} ref="inputSearch" className="input-search" defaultValue={this.state.websiteLinkname} placeholder="Search TV Channel/Program"/>
         </div>
         <div className="menu">
           <img src={iconMenu} className="icon-menu" alt="Menu" /> 
