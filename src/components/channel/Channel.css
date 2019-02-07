@@ -1,0 +1,35 @@
+.channel {
+    background-color: #343448;
+    color: #ffffff;
+}
+
+.channel .item {
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    display: flex;
+    flex-direction: row;
+}
+
+.channel .item .time{
+    width: 120px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.channel .item .detail {
+    flex: 1 1 auto;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.channel .detail .title {
+    flex: 1 1 auto;
+    font-size: 14px;
+}
+
+.channel .detail .link {
+    flex: 1 1 auto;
+    font-size: 12px;
+}
