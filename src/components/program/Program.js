@@ -20,6 +20,8 @@ class Program extends Component {
       refreshPlaylistSrc: 60000,
       refreshPlayingItem: 1000,
       queryDay: '',
+      playingItemTest: 0,
+      playerStatus: 'play',
     };
     this.updateDate = this.updateDate.bind(this);
     this.interval = setInterval(this.updateDate, this.state.refreshPlayingItem);
@@ -91,17 +93,63 @@ class Program extends Component {
   
   handleOnClickPlay(){
     console.log('Play');
+    let playerStatus = this.state.playerStatus;
+    if(playerStatus==='play'){
+      this.setState({
+        playerStatus: 'pause'
+      });
+    }
+    if(playerStatus==='pause'){
+      this.setState({
+        playerStatus: 'play'
+      });
+    }
   }
 
   handleOnClickChange(e){
-    console.log('Change',e.target.value)
+    const option = e.target.value;
+    let playingItem = parseInt(this.state.playingItem);
+    const playingItemLimit = this.getPlayingItem(this.state.playlistSrc);
+    const playlistSrcTotal = this.state.playlistSrc.length-1;
+    let playerStatus = this.state.playerStatus;
+
+    if(option==='back'){
+      if(playingItem<playlistSrcTotal) {
+        playerStatus = 'pause';
+        playingItem = playingItem+1;
+      }
+    }
+
+    if(option==='next'){
+      if(playingItem>playingItemLimit) {
+        playerStatus = 'pause';
+        playingItem = playingItem-1;
+      }
+    }
+
+    if(option==='now'){
+      playerStatus = 'play';
+      playingItem = this.getPlayingItem(this.state.playlistSrc);
+    }
+
+    this.setState({
+      playerStatus,
+      playingItem
+    })
+    
   }
   
   updateDate() {
-    const playingItem = this.getPlayingItem(this.state.playlistSrc);
-    this.setState({
-      playingItem,
-    });
+    if(this.state.playerStatus==='play'){
+      //console.log('playerStatus = play');
+      const playingItem = this.getPlayingItem(this.state.playlistSrc);
+      this.setState({
+        playingItem,
+      });      
+    }
+    /*if(this.state.playerStatus==='pause'){
+      console.log('playerStatus = pause');
+    }*/
   }
 
   updateDatePlaylistSrc() {
@@ -162,11 +210,23 @@ class Program extends Component {
           <div className="container">
             <iframe title={'watv'} src={this.state.playlistSrc[this.state.playingItem].module_link} className="iframe-container"></iframe>
             <div className="console-wrapper">
-              {this.state.playlistSrc.map((item,i) => <div key={i} className={(i===this.state.playingItem) ? 'playing-item selected' : 'playing-item'} >{i} {decodeURI(item.module_name)} / {item.module_link} / {item.program_day} / {item.program_begin} </div>)}
+              {
+                this.state.playlistSrc.map((item,i) => 
+                  <div key={i} className={(i===this.state.playingItem) ? 'playing-item selected' : 'playing-item'} >
+                    <div>{i}</div>
+                    <div>
+                      {decodeURI(item.module_name)} 
+                      {item.module_link}
+                    </div>
+                    {item.program_day} 
+                    {item.program_begin} 
+                  </div>
+                )
+              }
             </div>
           </div>
           <div className="player-control">
-            <button onClick={this.handleOnClickPlay}>Play/Pause</button> 
+            <button onClick={this.handleOnClickPlay}>{(this.state.playerStatus==='play') ? 'Play' : 'Pause'}</button> 
             <button onClick={this.handleOnClickChange} value="back">Back</button> 
             <button onClick={this.handleOnClickChange} value="next">Next</button> 
             <button onClick={this.handleOnClickChange} value="now">Now</button>
