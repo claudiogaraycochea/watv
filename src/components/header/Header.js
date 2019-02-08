@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../../assets/logo-watv.svg';
-import iconMenu from '../../assets/icon-menu.svg';
+//import iconMenu from '../../assets/icon-menu.svg';
 import './Header.css';
 import axios from 'axios';
 import { API_URL } from '../../constants';
@@ -50,9 +50,10 @@ class Main extends Component {
         <div className="search">
           <input type="text" onKeyUp={this.handleSearchKeyUp} ref="inputSearch" className="input-search" defaultValue={this.state.websiteLinkname} placeholder="Search TV Channel/Program"/>
         </div>
+        {/*
         <div className="menu">
           <img src={iconMenu} className="icon-menu" alt="Menu" /> 
-        </div>
+        </div>*/}
         <div className="search-list-result">
           { (this.state.searchList.length>0) ? this.getSearchList(): null }
         </div>
