@@ -7,7 +7,6 @@ import iconPlay from '../../assets/icon-play.svg';
 import iconPause from '../../assets/icon-pause.svg';
 import iconBack from '../../assets/icon-back.svg';
 import iconNext from '../../assets/icon-next.svg';
-import iconRefresh from '../../assets/icon-refresh.svg';
 
 class Program extends Component {
   constructor(props) {
@@ -35,8 +34,6 @@ class Program extends Component {
     this.handleOnClickPlay = this.handleOnClickPlay.bind(this);
     this.handleOnClickBack = this.handleOnClickBack.bind(this);
     this.handleOnClickNext = this.handleOnClickNext.bind(this);
-    this.handleOnClickRefresh = this.handleOnClickRefresh.bind(this);
-    this.handleOnClickChange = this.handleOnClickChange.bind(this);
   }
 
   timeToNumber(time){
@@ -252,20 +249,11 @@ class Program extends Component {
           </div>
           <div className="player-control">
             <div className="item" onClick={this.handleOnClickPlay}>
-              {(this.state.playerStatus==='play') ? <img src={iconPlay} alt="" /> : <img src={iconPause} alt="" />}
+              {(this.state.playerStatus==='play') ? <img src={iconPause} alt="" /> : <img src={iconPlay} alt="" />}
             </div>
             <div className="item" onClick={this.handleOnClickBack}><img src={iconBack} alt="" /></div> 
-            <div className="item" onClick={this.handleOnClickNext}><img src={iconNext} alt="" /></div> 
-            <div className="item" onClick={this.handleOnClickRefresh}><img src={iconRefresh} alt="" /></div>
+            <div className="item" onClick={this.handleOnClickNext}><img src={iconNext} alt="" /></div>
           </div>
-          {/*<div className="player-control">
-            <button className="item" onClick={this.handleOnClickPlay}>
-              {(this.state.playerStatus==='play') ? 'Play' : 'Paus'}
-            </button>
-            <button className="item" onClick={this.handleOnClickBack}>Back</button> 
-            <button className="item" onClick={this.handleOnClickNext}>Next</button> 
-            <button className="item" onClick={this.handleOnClickRefresh}>Refresh</button>
-            </div>*/}
         </div>
       );      
     }
