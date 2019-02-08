@@ -3,6 +3,11 @@ import './Program.css';
 import axios from 'axios';
 import { API_URL } from '../../constants';
 import Empty from '../empty/Empty';
+import iconPlay from '../../assets/icon-play.svg';
+import iconPause from '../../assets/icon-pause.svg';
+import iconBack from '../../assets/icon-back.svg';
+import iconNext from '../../assets/icon-next.svg';
+import iconRefresh from '../../assets/icon-refresh.svg';
 
 class Program extends Component {
   constructor(props) {
@@ -28,6 +33,9 @@ class Program extends Component {
     this.updateDatePlaylistSrc = this.updateDatePlaylistSrc.bind(this);
     this.intervalPlaylistSrc = setInterval(this.updateDatePlaylistSrc,this.state.refreshPlaylistSrc);
     this.handleOnClickPlay = this.handleOnClickPlay.bind(this);
+    this.handleOnClickBack = this.handleOnClickBack.bind(this);
+    this.handleOnClickNext = this.handleOnClickNext.bind(this);
+    this.handleOnClickRefresh = this.handleOnClickRefresh.bind(this);
     this.handleOnClickChange = this.handleOnClickChange.bind(this);
   }
 
@@ -106,8 +114,20 @@ class Program extends Component {
     }
   }
 
-  handleOnClickChange(e){
-    const option = e.target.value;
+  handleOnClickBack(){
+    this.handleOnClickChange('back');
+  }
+
+  handleOnClickNext(){
+    this.handleOnClickChange('next');
+  }
+
+  handleOnClickRefresh(){
+    this.handleOnClickChange('refresh');
+  }
+
+  handleOnClickChange(option){
+    //const option = e.target.value;
     let playingItem = parseInt(this.state.playingItem);
     const playingItemLimit = this.getPlayingItem(this.state.playlistSrc);
     const playlistSrcTotal = this.state.playlistSrc.length-1;
@@ -127,7 +147,7 @@ class Program extends Component {
       }
     }
 
-    if(option==='now'){
+    if(option==='refresh'){
       playerStatus = 'play';
       playingItem = this.getPlayingItem(this.state.playlistSrc);
     }
@@ -205,6 +225,7 @@ class Program extends Component {
     if(this.state.playlistSrc.length>0){
       if(this.state.playlistLastUpdateReseted===true) {this.getPlaylistSrc();}
       if(this.state.resetPlaylistSrc===true) {this.resetPlaylistSrc();}
+      console.log(this.state)
       return (
         <div className="primary-style">
           <div className="container">
@@ -212,25 +233,39 @@ class Program extends Component {
             <div className="console-wrapper">
               {
                 this.state.playlistSrc.map((item,i) => 
-                  <div key={i} className={(i===this.state.playingItem) ? 'playing-item selected' : 'playing-item'} >
-                    <div>{i}</div>
-                    <div>
-                      {decodeURI(item.module_name)} 
-                      {item.module_link}
+                  <div key={i} className={`item ${(i===this.state.playingItem) ? 'playing-item selected' : 'playing-item'}`} >
+                    <div className="id">{i}</div>
+                    <div className="detail">
+                      <div>{decodeURI(item.module_name)}</div>
+                      <div>{item.module_link}</div>
                     </div>
-                    {item.program_day} 
-                    {item.program_begin} 
+                    <div className="day">
+                      {item.program_day}
+                    </div>
+                    <div className="time">
+                      {item.program_begin}
+                    </div>
                   </div>
                 )
               }
             </div>
           </div>
           <div className="player-control">
-            <button onClick={this.handleOnClickPlay}>{(this.state.playerStatus==='play') ? 'Play' : 'Pause'}</button> 
-            <button onClick={this.handleOnClickChange} value="back">Back</button> 
-            <button onClick={this.handleOnClickChange} value="next">Next</button> 
-            <button onClick={this.handleOnClickChange} value="now">Now</button>
-          </div> 
+            <div className="item" onClick={this.handleOnClickPlay}>
+              {(this.state.playerStatus==='play') ? <img src={iconPlay} alt="" /> : <img src={iconPause} alt="" />}
+            </div>
+            <div className="item" onClick={this.handleOnClickBack}><img src={iconBack} alt="" /></div> 
+            <div className="item" onClick={this.handleOnClickNext}><img src={iconNext} alt="" /></div> 
+            <div className="item" onClick={this.handleOnClickRefresh}><img src={iconRefresh} alt="" /></div>
+          </div>
+          {/*<div className="player-control">
+            <button className="item" onClick={this.handleOnClickPlay}>
+              {(this.state.playerStatus==='play') ? 'Play' : 'Paus'}
+            </button>
+            <button className="item" onClick={this.handleOnClickBack}>Back</button> 
+            <button className="item" onClick={this.handleOnClickNext}>Next</button> 
+            <button className="item" onClick={this.handleOnClickRefresh}>Refresh</button>
+            </div>*/}
         </div>
       );      
     }
