@@ -119,10 +119,6 @@ class Program extends Component {
     this.handleOnClickChange('next');
   }
 
-  handleOnClickRefresh(){
-    this.handleOnClickChange('refresh');
-  }
-
   handleOnClickChange(option){
     //const option = e.target.value;
     let playingItem = parseInt(this.state.playingItem);
@@ -142,11 +138,6 @@ class Program extends Component {
         playerStatus = 'pause';
         playingItem = playingItem-1;
       }
-    }
-
-    if(option==='refresh'){
-      playerStatus = 'play';
-      playingItem = this.getPlayingItem(this.state.playlistSrc);
     }
 
     this.setState({

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Channel.css';
 import Empty from '../empty/Empty';
+import Footer from '../footer/Footer';
 
 class Channel extends Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class Channel extends Component {
               </div>
             )
           }
+          <Footer className="footer"/>  
         </div>
       );
     }

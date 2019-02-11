@@ -6,12 +6,6 @@
     border: 2px solid #ff006b;
 }
 
-.iframe-wrapper {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-}
-
 .console-wrapper {
     position: absolute;
     bottom: 36px;
@@ -46,7 +40,8 @@
 .iframe-container {
     border: 0;
     width: 100%;
-    flex: 1 1 auto;
+    height: 100%;
+    height: -webkit-fill-available;
 }
 
 ::-webkit-scrollbar {
@@ -77,8 +72,11 @@
     background: #343448;
     color: #ffffff;
     font-size: 11px;
+    position: fixed;
+    bottom: 0;
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .player-control .item {
