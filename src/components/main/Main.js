@@ -7,6 +7,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Welcome from '../welcome/Welcome';
 import Player from '../player/Player';
 import Terms from '../terms/Terms';
+import Privacy from '../privacy/Privacy';
 
 class Main extends Component {
   render() {
@@ -18,6 +19,7 @@ class Main extends Component {
                 <Switch>
                     <Route exact path="/" component={Welcome} />
                     <Route exact path="/terms" component={Terms} />
+                    <Route exact path="/privacy" component={Privacy} />
                     <Route path="/:websiteLinkname" component={Player} />  
                 </Switch>
             </BrowserRouter>
