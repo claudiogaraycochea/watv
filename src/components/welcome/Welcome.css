@@ -11,6 +11,12 @@
     margin-bottom: 20px;
 }
 
+.welcome-wrapper .title {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
 .welcome-wrapper .slogan {
     font-size: 20px;
+    text-align: center;
 }
