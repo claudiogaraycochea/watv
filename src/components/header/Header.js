@@ -10,23 +10,38 @@ class Main extends Component {
     super(props);
     this.state = {
       websiteLinkname: '',
-      searchList: []
+      searchList: [],
+      loading: false
     };
     this.handleSearchKeyUp = this.keyUpHandler.bind(this, 'inputSearch');
   }
 
   keyUpHandler(refName, e) {
+    this.setState({
+      loading: true
+    });
     const inputSearch = e.target.value;
     if(inputSearch.length>3) {
       let postData='q='+inputSearch;
       axios.post(`${API_URL}s`, postData )
         .then(response => {
           this.setState({
-            searchList: response.data
+            searchList: response.data,
+            loading: false
           });
         })
-        .catch(error => {});
+        .catch(error => {
+        });
     }
+    else {
+      this.setState({
+        loading: false
+      });      
+    }
+  }
+
+  loading() {
+    return (<div className="loading"></div>);
   }
 
   getSearchList(){
@@ -44,11 +59,12 @@ class Main extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="header">
         <a href="/"><img src={logo} className="logo" alt="" /></a>
         <div className="search">
-          <input type="text" onKeyUp={this.handleSearchKeyUp} ref="inputSearch" className="input-search" defaultValue={this.state.websiteLinkname} placeholder="Search TV Channel/Program"/>
+          <input type="text" onKeyUp={this.handleSearchKeyUp} ref="inputSearch" className="input-search" defaultValue={this.state.websiteLinkname} placeholder="TV Channel/Show"/>
         </div>
         {/*
         <div className="menu">
@@ -57,6 +73,7 @@ class Main extends Component {
         <div className="search-list-result">
           { (this.state.searchList.length>0) ? this.getSearchList(): null }
         </div>
+        { (this.state.loading) ? this.loading(): null }
       </div>
     );
   }

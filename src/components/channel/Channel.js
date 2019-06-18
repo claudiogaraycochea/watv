@@ -50,7 +50,7 @@ class Channel extends Component {
             this.state.playlistSrc.map((item,i) => 
               <div className="item" key={i}>
                 <div className="time">
-                  {this.timeToHHMM(item.program_begin)}Hs
+                  {this.timeToHHMM(item.program_begin)}hs
                 </div>
                 <div className="detail">
                   <div className="title">{decodeURI(item.module_name)}</div>
