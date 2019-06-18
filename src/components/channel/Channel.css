@@ -1,32 +1,36 @@
 .channel {
-    background-color: #1a1a35;
+    background-color: #15151f;
     color: #ffffff;
 }
 
 .channel .item {
-    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    border-bottom: 1px solid black;
     display: flex;
     flex-direction: row;
 }
 
 .channel .item .time{
-    width: 120px;
-    padding: 20px;
+    width: 100px;
+    padding: 20px 10px 20px 20px;
+    font-size: 20px;
+    font-weight: 800;
     display: flex;
     align-items: center;
+    border-right: 1px solid black;
     justify-content: center;
+    color: #ff1577;
 }
 
 .channel .item .detail {
     flex: 1 1 auto;
     display: flex;
-    padding: 20px;
+    padding: 20px 20px 20px 10px;
     flex-direction: column;
 }
 
 .channel .detail .title {
     flex: 1 1 auto;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .channel .detail .link {
