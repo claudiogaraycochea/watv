@@ -68,8 +68,8 @@
 }
 
 .player-control {
-    padding: 10px 40px;
-    background: #343448;
+    padding: 5px 40px;
+    background: #15151f;
     color: #ffffff;
     font-size: 11px;
     position: fixed;
@@ -77,11 +77,11 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: 40px;
 }
 
 .player-control .item {
     width: 20px;
-    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,6 +91,6 @@
 }
 
 .player-control .item img {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
