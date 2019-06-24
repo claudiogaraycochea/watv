@@ -5,6 +5,7 @@ import axios from 'axios';
 import { API_URL } from '../../constants';
 import Channel from '../channel/Channel';
 import Program from '../program/Program';
+import Error404 from '../error404/Error404';
 
 class Player extends Component {
   constructor(props) {
@@ -38,15 +39,18 @@ class Player extends Component {
           <Program data={this.state.data} websiteLinkname={this.props.match.params.websiteLinkname} />
         );     
       }
-      else {
+      if(this.state.data.websiteType==='2') {
         return (
           <Channel data={this.state.data} />
         )
       }
+      if(this.state.data.websiteId===null){
+        return (<Error404 />)
+      }
     }
     else {
       return (
-        <div className="primary-style">
+        <div className="tertiary-style">
           <div className="container padding-20 center">
             Loading...
           </div>
