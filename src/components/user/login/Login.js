@@ -27,6 +27,7 @@ class Login extends Component {
         if(response.data.visitor_token!==undefined) {
           sessionStorage.setItem('visitor_id',response.data.visitor_id);
           sessionStorage.setItem('visitor_firstname',response.data.visitor_firstname);
+          sessionStorage.setItem('visitor_lastname',response.data.visitor_lastname);
           sessionStorage.setItem('visitor_token',response.data.visitor_token);
           sessionStorage.setItem('visitor_image',response.data.visitor_image);
           // this.props.openSession(response.data.user_firstname);

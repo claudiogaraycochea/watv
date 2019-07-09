@@ -58,6 +58,13 @@
     justify-content: center;
 }
 
+.center-wrapper {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;    
+}
+
 h1, h2, h3 {
     margin-top: 0;
     padding-top: 0;

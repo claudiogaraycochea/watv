@@ -18,23 +18,52 @@ class SideMenu extends Component {
     this.props.setSideMenu(sideMenu);
   }
 
+  userLogged = () => {
+    const visitorFullname = `${sessionStorage.getItem('visitor_firstname')}  ${sessionStorage.getItem('visitor_lastname')}`
+    return (
+      <div className="visitor-profile">
+        <div className="image"></div>
+        <div className="fullname">
+          Hey {visitorFullname}!
+        </div>
+        <div className="message">
+          This account is used for interactivity with TV channels or shows.
+        </div>
+        <div>
+          <a href="./Close">Close Session</a>
+        </div>
+      </div>
+    );
+  }
+
+  userLogin = () => {
+    return (
+      <div className="visitor-profile">
+        <div className="image"></div>
+        <div className="fullname">
+          Welcome!
+        </div>
+        <div className="message">
+          This account is used for interactivity with TV channels or shows.
+        </div>
+        <div>
+          <a href="./Login">Login / Sign Up</a>
+        </div>
+      </div>
+    );
+  }
+
   render() {
+    const visitor_token = sessionStorage.getItem('visitor_token');
     const { sideMenu } = this.props;
     const classMenu = sideMenu ? 'side-menu-wrapper' : 'side-menu-wrapper minimized';
     return(
       <div className={classMenu} >
         <div className="side-menu-bg" onClick={() => this.handleClickOutside()}>
-          Testing
         </div>
         <div ref={this.setWrapperRef} className='side-menu'>
-          <div className="image">
-          </div>
-          <div className="fullname">
-            Claudio Garaycochea
-          </div>
-          <div>
-            Close Session
-          </div>
+          {(visitor_token)? this.userLogged() : this.userLogin()}
+          <div className="footer">Copyright 2019</div>
         </div>
       </div>
     )

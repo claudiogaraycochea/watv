@@ -49,3 +49,22 @@
 .side-menu-wrapper.minimized {
   transform: translate3d(-120%, 0, 0);
 }
+
+.side-menu .visitor-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-menu .message {
+  padding: 20px;
+  text-align: center;
+}
+
+.side-menu .footer {
+  color: #6c657b;
+  left: 0;
+  right: 0;
+  background: transparent;
+}
