@@ -1,0 +1,51 @@
+.side-menu-wrapper {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  transition: transform 0.2s;
+	transform: translate3d(0, 0, 0);
+}
+
+.side-menu-bg {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.side-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 80%;
+  z-index: 1000;
+  background-color: #262638;
+  color: #ffffff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.side-menu .image {
+  margin-bottom: 20px;
+  background-image: url(../../assets/icon-user.svg);
+  height: 100px;
+  width: 100px;
+}
+
+.side-menu .fullname {
+  font-size: 18px;
+}
+
+.side-menu-wrapper.minimized {
+  transform: translate3d(-120%, 0, 0);
+}
