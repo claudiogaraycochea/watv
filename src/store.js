@@ -3,11 +3,16 @@ import thunk from 'redux-thunk';
 
 const reducer = (state, action) => {
   switch (action.type) {
-
-    case "REPLACE_PRODUCTS":
+    case "SET_SIDE_MENU":
       return {
         ...state,
-        products: action.products
+        sideMenu: action.sideMenu
+      };
+
+    case "SET_HEADER_TITLE":
+      return {
+        ...state,
+        headerTitle: action.headerTitle
       };
 
     case "PRODUCT_RESPONSE": 
@@ -46,7 +51,7 @@ const reducer = (state, action) => {
 }
 
 const logger = store => next => action => {
-  //console.log('dispatching', action)
+  console.log('dispatching', action)
   let result = next(action)
   //console.log('next state', store.getState())
   return result
