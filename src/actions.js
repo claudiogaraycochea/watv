@@ -1,6 +1,13 @@
 import axios from 'axios';
 import { API_URL } from './constants';
 
+const setSideMenu = (sideMenu) => {
+  return {
+    type: "SET_SIDE_MENU",
+    sideMenu
+  };
+}
+
 const loadProducts = () => {
   return dispatch => {
     axios.get(`${API_URL}products`)
@@ -52,4 +59,4 @@ const getPlaylist = () => {
   };
 };
 
-export { getPlaylist, loadProducts, addToCart, removeFromCart };
+export { setSideMenu, getPlaylist, loadProducts, addToCart, removeFromCart };
