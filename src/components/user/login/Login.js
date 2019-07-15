@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import FacebookLogin from 'react-facebook-login';
 import Footer from "../../footer/Footer";
@@ -57,7 +57,6 @@ class Login extends Component {
   
   render() {
     const { first_name, last_name, email, url } = this.state.data;
-    console.log('state: ', this.state);
     if(first_name === undefined) {
       return(
         <div className="tertiary-style">
