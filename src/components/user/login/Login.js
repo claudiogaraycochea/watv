@@ -1,15 +1,11 @@
+/*global FB*/
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import FacebookLogin from 'react-facebook-login';
 import Footer from "../../footer/Footer";
 import axios from 'axios';
 import { API_VISITOR_URL } from '../../../constants';
-
-/* const responseFacebook = (response) => {
-  console.log(response);
-  console.log('',response.name);
-} */
 
 class Login extends Component {
   constructor(props) {
@@ -43,7 +39,9 @@ class Login extends Component {
       })
       .catch(error => {});
   }
-
+  componentDidUpdate() {
+    FB.XFBML.parse();
+  }
   responseFacebook = (response) => {
     this.setState({
       data: {

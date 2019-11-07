@@ -41,8 +41,8 @@ class Channel extends Component {
   }
 
   render() {
-    console.log('CHANNEL: ',this.props);
-    console.log('CHANNEL STATE:', this.state);
+    // console.log('CHANNEL: ',this.props);
+    // console.log('CHANNEL STATE:', this.state);
     if(this.state.playlistSrc.length>0){
       return (
         <div className="tertiary-style channel">

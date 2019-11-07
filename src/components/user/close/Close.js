@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import FacebookLogin from 'react-facebook-login';
+// import FacebookLogin from 'react-facebook-login';
 import Footer from "../../footer/Footer";
-import axios from 'axios';
-import { API_VISITOR_URL } from '../../../constants';
+// import axios from 'axios';
+// import { API_VISITOR_URL } from '../../../constants';
 
 /* const responseFacebook = (response) => {
   console.log(response);

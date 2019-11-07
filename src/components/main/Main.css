@@ -42,7 +42,7 @@
 }
 
 .tertiary-style {
-    background: #15151f;
+    background: #2E1467;
     color: #ffffff;
     min-height: 100%;
     display: flex;
@@ -68,4 +68,19 @@
 h1, h2, h3 {
     margin-top: 0;
     padding-top: 0;
+}
+
+.btn {
+    padding: 14px 40px;
+    border-radius: 20px;
+    background-color: #ff006b;
+    border: 0 solid;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.text-xlarge {
+    font-size: 40px;
+    font-weight: bold;
 }
