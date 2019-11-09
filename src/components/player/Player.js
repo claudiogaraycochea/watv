@@ -50,7 +50,7 @@ class Player extends Component {
     }
     else {
       return (
-        <div className="tertiary-style">
+        <div className="secondary-style">
           <div className="container padding-20 center">
             Loading...
           </div>
