@@ -120,7 +120,7 @@ class Login extends Component {
     
     if(status === 'unknow') {
       return (
-        <div className="tertiary-style">
+        <div className="secondary-style">
           <div className="container padding-20 center">
             <div className="center-wrapper">
               <FacebookProvider appId="2444720422428009">
@@ -159,7 +159,7 @@ class Login extends Component {
       //this.login();
       // console.log('===> no first_name:', this.state);
       return (
-        <div className="tertiary-style">
+        <div className="secondary-style">
           <div className="container padding-20 center">
             <div className="center-wrapper">
               <FacebookProvider appId="2444720422428009">

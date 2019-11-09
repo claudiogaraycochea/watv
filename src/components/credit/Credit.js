@@ -11,16 +11,26 @@ class Credit extends Component {
   }
 
   render() {
-    return <div className="tertiary-style">
-      <div className="container padding-20 center">
-        <div className="center-wrapper">
+    return (
+      <div className="secondary-style credit-wrapper">
+        <div className="container padding-20 text-center">
           <h2>My Credit</h2>
-          <div className='text-xlarge'>$ 0.00</div>
-          <a className='btn' href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=22970572-acaab5de-d173-4e73-8345-6d9f07d67162">Buy Credit</a>
-         </div>
-				</div>
-				<Footer className="footer" />
-			</div>;
+          <div className='row'>
+            <i className='circle-credit'></i>
+          </div>      
+          <div className='amount'>
+            $ 0.00
+          </div>
+          <div className='row line'>
+            <a className='btn' href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=22970572-acaab5de-d173-4e73-8345-6d9f07d67162">Buy Credit</a>
+          </div>
+          <div className='row'>
+            <a href='./payments'>My Payments</a>
+          </div>
+        </div>
+        <Footer className="footer" />
+      </div>
+    );
   }
 }
 

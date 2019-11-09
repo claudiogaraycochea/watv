@@ -26,13 +26,13 @@ class SideMenu extends Component {
         <div className="fullname">
           Hey {visitorFullname}!
         </div>
-        <div className="message">
+        <div className="row">
           This account is used for interactivity with TV channels or shows.
         </div>
-        <div>
-          <a href='./credit'>My Credit</a>
+        <div className='row'>
+          <a href='/credit'>My Credit</a>
         </div>
-        <div>
+        <div className='row'>
           <a href="./Close">Close Session</a>
         </div>
       </div>
@@ -66,7 +66,7 @@ class SideMenu extends Component {
         </div>
         <div ref={this.setWrapperRef} className='side-menu'>
           {(visitor_token) ? this.userLogged() : this.userLogin()}
-          {/*(visitor_token) ? this.userLogged() : this.userLogged()*/ }
+          {/*(visitor_token) ? this.userLogged() : this.userLogged()*/}
           <div className="footer">Copyright 2019</div>
         </div>
       </div>

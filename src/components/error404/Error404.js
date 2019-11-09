@@ -6,7 +6,7 @@ import logo from '../../assets/logo-watv.svg';
 class Error404 extends Component {
   render() {
     return (
-      <div className="tertiary-style">
+      <div className="secondary-style">
         <div className="container padding-20 center">
           <div className="welcome-wrapper">
             <div className="title">Ups! Page not found</div>

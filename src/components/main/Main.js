@@ -11,6 +11,9 @@ import Player from '../player/Player';
 import Terms from '../terms/Terms';
 import Privacy from '../privacy/Privacy';
 import Credit from '../credit/Credit';
+import BuyNow from '../buyNow/BuyNow';
+import Payments from '../payments/Payments';
+import MicroAds from '../microAds/MicroAds';
 import SideMenu from '../sideMenu/SideMenu';
 
 class Main extends Component {
@@ -34,6 +37,9 @@ class Main extends Component {
               <Route exact path="/terms" component={Terms} />
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/credit" component={Credit} />
+              <Route exact path="/buynow/:project_id" component={BuyNow} />
+              <Route exact path="/payments" component={Payments} />
+              <Route exact path="/microads" component={MicroAds} />
               <Route path="/:websiteLinkname" component={Player} />  
             </Switch>
           </BrowserRouter>

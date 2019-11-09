@@ -30,7 +30,7 @@ class Close extends Component {
   
   render() {
     return(
-      <div className="tertiary-style">
+      <div className="secondary-style">
         <div className="container padding-20 center">
           <div className="center-wrapper">
             <h2>Closed Session</h2>

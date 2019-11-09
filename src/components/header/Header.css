@@ -26,6 +26,7 @@
     background-image: url(../../assets/icon-menu.svg);
     background-size: contain;
     background-repeat: no-repeat;
+    background-position-x: 8px;
     height: 24px;
     width: 24px;
 }  
