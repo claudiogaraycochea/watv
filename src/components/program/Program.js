@@ -97,7 +97,7 @@ class Program extends Component {
   }
   
   handleOnClickPlay(){
-    console.log('Play');
+    // console.log('Play');
     let playerStatus = this.state.playerStatus;
     if(playerStatus==='play'){
       this.setState({
@@ -213,9 +213,9 @@ class Program extends Component {
     if(this.state.playlistSrc.length>0){
       if(this.state.playlistLastUpdateReseted===true) {this.getPlaylistSrc();}
       if(this.state.resetPlaylistSrc===true) {this.resetPlaylistSrc();}
-      console.log(this.state)
+      // console.log(this.state)
       return (
-        <div className="tertiary-style">
+        <div className="secondary-style">
           <div className="container">
             <iframe title={'watv'} src={this.state.playlistSrc[this.state.playingItem].module_link} className="iframe-container"></iframe>
             <div className="console-wrapper">

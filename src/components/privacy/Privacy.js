@@ -11,7 +11,7 @@ class Privacy extends Component {
   }
 
   render() {
-    return <div className="tertiary-style">
+    return <div className="secondary-style">
       <div className="container padding-20 center">
         <div className="center-wrapper">
           <h2>Privacy Policy</h2>
